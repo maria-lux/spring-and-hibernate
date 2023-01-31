@@ -1,6 +1,7 @@
 package org.udemy.springdemo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.udemy.springdemo.coaches.Coach;
 
 public class AnnotationDemoApp {
     public static void main(String[] args) {

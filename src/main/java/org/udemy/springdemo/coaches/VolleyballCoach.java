@@ -1,6 +1,7 @@
-package org.udemy.springdemo;
+package org.udemy.springdemo.coaches;
 
 import org.springframework.stereotype.Component;
+import org.udemy.springdemo.fortuneServices.FortuneService;
 
 @Component
 public class VolleyballCoach implements Coach {
