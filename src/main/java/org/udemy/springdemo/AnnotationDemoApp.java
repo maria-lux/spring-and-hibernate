@@ -9,10 +9,10 @@ public class AnnotationDemoApp {
 
         // default bean id is class name in camelCase
         Coach theCoach = context.getBean("tennisCoach", Coach.class);
-        Coach volleyCoach = context.getBean("volleyballCoach", Coach.class);
+        //Coach volleyCoach = context.getBean("volleyballCoach", Coach.class);
 
         System.out.println(theCoach.getDailyWorkout());
-        System.out.println(volleyCoach.getDailyWorkout());
+        //System.out.println(volleyCoach.getDailyWorkout());
         System.out.println(theCoach.getDailyFortune());
 
         context.close();
