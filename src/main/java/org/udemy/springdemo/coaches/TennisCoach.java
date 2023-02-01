@@ -6,10 +6,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.udemy.springdemo.fortuneServices.FortuneService;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 // default bean id will be tennisCoach
 // you can give it explicit bean id, e.g. "@Component("thatSillyCoach")
 @Component
-@Scope("prototype")
+//@Scope("prototype")
 public class TennisCoach implements Coach {
 
     // apply annotation directly to the field (field injection)
@@ -45,5 +48,17 @@ public class TennisCoach implements Coach {
     public void doSomeCrazyStuff(FortuneService fortuneService) {
         this.fortuneService = fortuneService;
     }*/
+
+    // define my init method
+    @PostConstruct
+    public void doSomeStartUpStuff(){
+        System.out.println("doSomeStartUpStuff()");
+    }
+
+    // define my destroy method
+    @PreDestroy
+    public void doSomeCleanUpStuff(){
+        System.out.println("doSomeCleanUpStuff()");
+    }
 
 }
