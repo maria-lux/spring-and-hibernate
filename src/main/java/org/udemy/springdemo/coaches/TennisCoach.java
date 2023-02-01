@@ -2,12 +2,14 @@ package org.udemy.springdemo.coaches;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.udemy.springdemo.fortuneServices.FortuneService;
 
 // default bean id will be tennisCoach
 // you can give it explicit bean id, e.g. "@Component("thatSillyCoach")
 @Component
+@Scope("prototype")
 public class TennisCoach implements Coach {
 
     // apply annotation directly to the field (field injection)
