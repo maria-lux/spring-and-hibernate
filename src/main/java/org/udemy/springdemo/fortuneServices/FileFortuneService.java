@@ -2,6 +2,7 @@ package org.udemy.springdemo.fortuneServices;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,30 +13,31 @@ import java.util.Random;
 @Component("fileFortuneService")
 public class FileFortuneService implements FortuneService {
 
-    private ArrayList<String> getFortunesFromFile(String path) {
+    private ArrayList<String> fortunes = new ArrayList<>();
+    private String path = "src/main/resources/fortunes.txt";
 
-        ArrayList<String> result = new ArrayList<>();
+    @PostConstruct
+    private void getFortunesFromFile() {
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             while (reader.ready()) {
-                result.add(reader.readLine());
+                fortunes.add(reader.readLine());
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return result;
     }
 
     @Override
     public String getFortune() {
-        ArrayList<String> fortunes = getFortunesFromFile("src/main/resources/fortunes.txt");
+        getFortunesFromFile();
         Random random = new Random();
         int index = random.nextInt(fortunes.size());
 
-        return fortunes.get(index);
+        return "FileFortuneService: " + fortunes.get(index);
     }
 
 
